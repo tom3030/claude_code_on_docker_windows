@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  dev-environment:
+    build: .
+    container_name: claude-code-container
+    volumes:
+      - ${USERPROFILE}/source:/workspace/source
+      - claude_config:/root/.config
+    # Keep the container running
+    tty: true
+    stdin_open: true
+
+volumes:
+  claude_config:
+    # This named volume will persist the Claude Code configuration including API key
